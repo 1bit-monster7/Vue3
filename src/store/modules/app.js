@@ -1,15 +1,15 @@
 import { login as loginApi } from '@/api/login'
 import router from '@/router'
+import { getToken, setToken } from '@/utils/auth'
 
 export default {
   namespaced: true,
   state: () => ({
-    token: localStorage.getItem('token') || ''
+    token: getToken()
   }),
   mutations: {
     setToken(state, token) {
       state.token = token
-      localStorage.setItem('token', token)
     }
   },
   actions: {
@@ -17,7 +17,9 @@ export default {
       return new Promise((resolve, reject) => {
         loginApi(userInfo)
           .then((r) => {
-            commit('setToken', r.token)
+            const { token } = r
+            commit('setToken', token)
+            setToken(token)
             router.replace('/')
             resolve(r)
           })
