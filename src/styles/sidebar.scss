@@ -8,7 +8,7 @@
 
   .sidebar-container {
     transition: width #{$sideBarDuration};
-    width: $sideBarWidth !important;
+    //width: $sideBarWidth !important;
     height: 100%;
     position: fixed;
     top: 0;

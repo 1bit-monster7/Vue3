@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    :collapse='!store.getters.sideBarType'
     router
     active-text-color='#3A98B9'
     text-color='#ffffff'
@@ -9,6 +10,9 @@
   >
     <el-sub-menu :index='`${item.id}`' v-for='item in MenuList' :key='item.id'>
       <template #title>
+        <el-icon >
+          <Edit />
+        </el-icon>
         <span>{{ item.authName }}</span>
       </template>
       <el-menu-item @click='savePath(son.path)' v-for='son in item.children' :key='son.id' :index="'/'+son.path">
@@ -21,6 +25,9 @@
 <script setup>
 import { getMenu } from '@/api/menu'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const MenuList = ref([])
@@ -37,6 +44,5 @@ const savePath = (path) => {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang='scss'>
 </style>

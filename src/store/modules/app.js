@@ -6,11 +6,14 @@ export default {
   namespaced: true,
   state: () => ({
     token: getToken(),
-    expires_in: null
+    sideBarType: true
   }),
   mutations: {
     setToken(state, token) {
       state.token = token
+    },
+    changeSideBarType(state) {
+      state.sideBarType = !state.sideBarType
     }
   },
   actions: {
