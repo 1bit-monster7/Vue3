@@ -3,6 +3,14 @@ const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = {
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData:
+          ' @import "@/styles/variables.scss"; @import "@/styles/mixin.scss"; ' // 引入全局 SasS 变量的文件（对应你全局文件的路径） 8版本用prependData
+      }
+    }
+  },
   configureWebpack: {
     plugins: [
       AutoImport({

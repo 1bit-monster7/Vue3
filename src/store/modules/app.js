@@ -1,11 +1,12 @@
 import { login as loginApi } from '@/api/login'
 import router from '@/router'
-import { getToken, setToken } from '@/utils/auth'
+import { getToken, removeToken, setToken } from '@/utils/auth'
 
 export default {
   namespaced: true,
   state: () => ({
-    token: getToken()
+    token: getToken(),
+    expires_in: null
   }),
   mutations: {
     setToken(state, token) {
@@ -26,6 +27,13 @@ export default {
           .catch((err) => {
             reject(err)
           })
+      })
+    },
+    logOut({ commit }) {
+      return new Promise((resolve, reject) => {
+        commit('setToken', '')
+        removeToken()
+        router.replace('/login')
       })
     }
   }

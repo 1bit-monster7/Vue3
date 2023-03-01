@@ -1,29 +1,25 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'Admin-Token'
+const TokenKey = 'Admin-Token-V3'
+// cookie 失效时间 单位 分钟
+export const defaultTokenExpirationTime = 600
 
-const ExpiresInKey = 'Admin-Expires-In'
+const millisecond = new Date().getTime()
+
+const expiresTime = new Date(
+  millisecond + 60 * 1000 * defaultTokenExpirationTime
+)
 
 export function getToken() {
   return Cookies.get(TokenKey)
 }
 
 export function setToken(token) {
-  return Cookies.set(TokenKey, token)
+  Cookies.set(TokenKey, token, {
+    expires: expiresTime
+  })
 }
 
 export function removeToken() {
   return Cookies.remove(TokenKey)
-}
-
-export function getExpiresIn() {
-  return Cookies.get(ExpiresInKey) || -1
-}
-
-export function setExpiresIn(time) {
-  return Cookies.set(ExpiresInKey, time)
-}
-
-export function removeExpiresIn() {
-  return Cookies.remove(ExpiresInKey)
 }

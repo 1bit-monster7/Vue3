@@ -66,7 +66,6 @@ const handlerLogin = () => {
   loginFormRef.value.validate(valid => {
     if (valid) {
       store.dispatch('app/login', form.value)
-      console.log('')
     }
   })
 }
