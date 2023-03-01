@@ -19,13 +19,11 @@ import Menu from './sideBar/menu'
 import Headers from './headers'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import variables from '@/styles/variables.module.scss'
 
 const store = useStore()
-
 const widthStyle = computed(() => {
-  const a = store.getters.sideBarType ? '210px' : '67px'
-  console.log(a, 'a')
-  return a
+  return store.getters.sideBarType ? variables.sideBarWidth : variables.hideSideBarWidth
 })
 
 </script>
