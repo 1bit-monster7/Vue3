@@ -8,27 +8,17 @@
     unique-opened
     :default-active='defaultActive'
   >
-    <el-sub-menu :index='`${item.id}`' v-for='item in MenuList' :key='item.id'>
-      <template #title>
-        <el-icon >
-          <Edit />
-        </el-icon>
-        <span>{{ item.authName }}</span>
-      </template>
-      <el-menu-item @click='savePath(son.path)' v-for='son in item.children' :key='son.id' :index="'/'+son.path">
-        {{ son.authName }}
-      </el-menu-item>
-    </el-sub-menu>
+    <SideBarItem :index='`${item.id}`' v-for='item in MenuList' :key='item.id' :item='item' />
   </el-menu>
 </template>
 
 <script setup>
+import SideBarItem from '../sideBarItem'
 import { getMenu } from '@/api/menu'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const MenuList = ref([])
 
@@ -39,9 +29,6 @@ const initMenuList = () => {
 }
 initMenuList() // 加载菜单列表
 
-const savePath = (path) => {
-  sessionStorage.setItem('path', '/' + path)
-}
 </script>
 
 <style scoped lang='scss'>

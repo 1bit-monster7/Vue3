@@ -6,7 +6,8 @@ export default {
   namespaced: true,
   state: () => ({
     token: getToken(),
-    sideBarType: true
+    sideBarType: true,
+    lang: localStorage.getItem('lang') || 'zh'
   }),
   mutations: {
     setToken(state, token) {
@@ -14,6 +15,9 @@ export default {
     },
     changeSideBarType(state) {
       state.sideBarType = !state.sideBarType
+    },
+    changLang (state, lang) {
+      state.lang = lang
     }
   },
   actions: {
@@ -37,6 +41,7 @@ export default {
         commit('setToken', '')
         removeToken()
         router.replace('/login')
+        resolve()
       })
     }
   }

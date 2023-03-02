@@ -6,7 +6,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: layout,
-    redirect: '/users',
+    redirect: '/users', // 重定向到user页
     children: [
       {
         path: 'users',

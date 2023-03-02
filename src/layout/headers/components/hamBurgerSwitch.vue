@@ -27,5 +27,6 @@ const changeSideBarType = () => {
 .hamburger-container {
   cursor: pointer;
   box-sizing: border-box;
+  margin-right: 16px;
 }
 </style>

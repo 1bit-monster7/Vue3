@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "prepare": "husky install"
@@ -15,6 +15,7 @@
     "element-plus": "^2.2.32",
     "js-cookie": "^3.0.1",
     "vue": "^3.2.13",
+    "vue-i18n": "next",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
@@ -29,6 +30,7 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-standard": "^6.1.0",
+    "autoprefixer": "^8.0.0",
     "cz-customizable": "^6.3.0",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
@@ -36,8 +38,10 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^7.0.1",
+    "postcss-pxtorem": "^6.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^6.0.11",
     "unplugin-auto-import": "^0.15.0",
     "unplugin-icons": "^0.15.3",
     "unplugin-vue-components": "^0.24.0"

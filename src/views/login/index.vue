@@ -2,7 +2,7 @@
   <div class='login-container'>
     <div class='container'>
       <div class='login-wrapper'>
-        <div class='header'>Login</div>
+        <div class='header'>{{ $t('login.title') }}</div>
         <div class='form-wrapper'>
           <el-form ref='loginFormRef' :rules='rules' :model='form'>
             <el-form-item prop='username'>
@@ -22,10 +22,10 @@
                 v-model='form.password' />
             </el-form-item>
           </el-form>
-          <el-button id='login' class='btn' @click='handlerLogin'>Login</el-button>
+          <el-button id='login' class='btn' @click='handlerLogin'>{{ $t('login.logIn') }}</el-button>
         </div>
         <div class='msg'>
-          Don't have account? <a href=''>Sing up</a>
+          {{ $t('login.noAccount') }} <a href=''>{{ $t('login.register') }}</a>
         </div>
       </div>
     </div>

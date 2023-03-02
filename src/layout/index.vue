@@ -38,7 +38,6 @@ const widthStyle = computed(() => {
 .container {
   width: calc(100% - $sideBarWidth);
   height: 100%;
-  background: red;
   position: fixed;
   top: 0;
   right: 0;
@@ -50,7 +49,7 @@ const widthStyle = computed(() => {
   }
 }
 
-::v-deep .el-header {
+:deep(.el-header) {
   padding: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>users</div>
+  <svg-icon icon='user'></svg-icon>
 </template>
 
 <script setup>

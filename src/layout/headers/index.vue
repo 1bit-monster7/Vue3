@@ -1,11 +1,48 @@
 <template>
   <div class='navbar'>
     <HamburgerSwitch />
+    <Crumbs />
+    <div class='navbar-right'>
+      <Lang class='navbar-item' />
+      <el-dropdown class='navbar-item'>
+        <Avatar />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click='handlerLogOut'>{{ $t('navbar.logOut') }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 
 <script setup>
 import HamburgerSwitch from './components/hamBurgerSwitch'
+import Crumbs from './components/crumbs'
+import Avatar from './components/avatar'
+import Lang from './components/lang'
+import { useStore } from 'vuex'
+import { ElMessage, ElMessageBox } from 'element-plus'
+
+const store = useStore()
+
+const handlerLogOut = () => {
+  ElMessageBox.confirm(
+    'Please confirm whether you need to log out ？',
+    {
+      confirmButtonText: 'Confirm',
+      cancelButtonText: 'Cancel',
+      type: 'warning'
+    }
+  )
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: 'log Out Successfully!'
+      })
+      store.dispatch('app/logOut')
+    })
+}
 </script>
 
 <style lang='scss' scoped>
@@ -19,18 +56,24 @@ import HamburgerSwitch from './components/hamBurgerSwitch'
   display: flex;
   box-sizing: border-box;
   position: relative;
+  align-items: center;
+
   .navbar-right {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
-    ::v-deep(.navbar-item) {
+    :deep(.navbar-item) {
       display: inline-block;
       margin-left: 18px;
       font-size: 22px;
       color: #5a5e66;
       box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    :deep(.el-avatar) {
       cursor: pointer;
     }
   }
