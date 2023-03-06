@@ -3,15 +3,9 @@
     <HamburgerSwitch />
     <Crumbs />
     <div class='navbar-right'>
+      <ScreenFull class='navbar-item' />
       <Lang class='navbar-item' />
-      <el-dropdown class='navbar-item'>
-        <Avatar />
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click='handlerLogOut'>{{ $t('navbar.logOut') }}</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <Avatar class='navbar-item' />
     </div>
   </div>
 </template>
@@ -21,28 +15,7 @@ import HamburgerSwitch from './components/hamBurgerSwitch'
 import Crumbs from './components/crumbs'
 import Avatar from './components/avatar'
 import Lang from './components/lang'
-import { useStore } from 'vuex'
-import { ElMessage, ElMessageBox } from 'element-plus'
-
-const store = useStore()
-
-const handlerLogOut = () => {
-  ElMessageBox.confirm(
-    'Please confirm whether you need to log out ？',
-    {
-      confirmButtonText: 'Confirm',
-      cancelButtonText: 'Cancel',
-      type: 'warning'
-    }
-  )
-    .then(() => {
-      ElMessage({
-        type: 'success',
-        message: 'log Out Successfully!'
-      })
-      store.dispatch('app/logOut')
-    })
-}
+import ScreenFull from './components/screenFull'
 </script>
 
 <style lang='scss' scoped>

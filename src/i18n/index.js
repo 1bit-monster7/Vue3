@@ -22,10 +22,9 @@ const messages = {
 const getCurrentLanguage = () => {
   // 从浏览器获取语言并设置对应语言
   const UALang = navigator.language // zh-CN
-  const langCode = UALang.indexOf('zh') !== -1 ? 'zh' : 'en'
+  const langCode = UALang.indexOf('zh') !== -1 ? 'en' : 'en'
   localStorage.setItem('lang', langCode)
   return langCode // 根据浏览器语言判断
-  // return 'en' // 默认使用英文
 }
 
 const i18n = createI18n({
