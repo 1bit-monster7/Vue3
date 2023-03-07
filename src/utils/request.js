@@ -23,12 +23,18 @@ service.interceptors.response.use(
     return new Promise((resolve, reject) => {
       const { meta, data } = response.data
       const code = meta.status || 200 // 如果没有状态码则默认200
-      const msg = meta.msg || '系统未知错误，请反馈给管理员'
-      if (code === 400) {
+      const msg = meta.msg
+      if (code === 400 && meta?.msg.indexOf('token') !== -1) {
         store.dispatch('app/logOut')
-        ElMessage.error(msg)
-      } else if (code !== 200 || code !== 201) {
-        resolve(data)
+        ElMessage.error(msg || 'token验证失效')
+      } else if (code === 200 || code === 201) {
+        ElMessage.success(msg || '成功')
+        resolve({
+          data,
+          meta
+        })
+      } else {
+        reject(ElMessage.error(meta.msg || 'fail no message'))
       }
     })
   },

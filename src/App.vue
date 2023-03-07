@@ -1,6 +1,23 @@
 <template>
-  <router-view />
+  <el-config-provider :locale='locale'>
+    <router-view />
+  </el-config-provider>
 </template>
 
+<script setup>
+import { computed, ref } from 'vue'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import en from 'element-plus/dist/locale/en.mjs'
+import { watchLang } from '@/i18n/watchLang'
+
+const lang = localStorage.getItem('lang')
+const language = ref(lang !== 'zh' ? 'en' : 'zh-cn')
+const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
+watchLang((lang) => {
+  language.value = lang !== 'zh' ? 'en' : 'zh-cn'
+})
+</script>
+
 <style lang='scss'>
+
 </style>

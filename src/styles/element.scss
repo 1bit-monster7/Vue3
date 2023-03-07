@@ -2,3 +2,21 @@
   --el-avatar-background-color: none !important;
   --el-avatar-bg-color: none !important;
 }
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    width: 60px;
+  }
+
+  .el-link {
+    width: 60px;
+  }
+}

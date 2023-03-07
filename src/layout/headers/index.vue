@@ -3,6 +3,7 @@
     <HamburgerSwitch />
     <Crumbs />
     <div class='navbar-right'>
+      <Driver class='navbar-item' />
       <ScreenFull class='navbar-item' />
       <Lang class='navbar-item' />
       <Avatar class='navbar-item' />
@@ -16,6 +17,7 @@ import Crumbs from './components/crumbs'
 import Avatar from './components/avatar'
 import Lang from './components/lang'
 import ScreenFull from './components/screenFull'
+import Driver from './components/driver'
 </script>
 
 <style lang='scss' scoped>

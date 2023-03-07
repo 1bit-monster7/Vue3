@@ -24,7 +24,7 @@ const MenuList = ref([])
 
 const initMenuList = () => {
   getMenu().then(res => {
-    MenuList.value = res
+    MenuList.value = res.data
   })
 }
 initMenuList() // 加载菜单列表

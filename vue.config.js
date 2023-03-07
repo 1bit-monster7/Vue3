@@ -9,7 +9,6 @@ function resolve(dir) {
 
 const webpack = require('webpack')
 
-console.log(webpack, 'wepback')
 module.exports = {
   configureWebpack: {
     plugins: [

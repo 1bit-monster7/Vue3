@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown class='navbar-item'>
+  <el-dropdown id='Avatar' class='navbar-item'>
     <el-avatar :size='40' :src='avatar' />
     <template #dropdown>
       <el-dropdown-menu>

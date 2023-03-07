@@ -16,7 +16,7 @@ export default {
     changeSideBarType(state) {
       state.sideBarType = !state.sideBarType
     },
-    changLang (state, lang) {
+    changLang(state, lang) {
       state.lang = lang
     }
   },
@@ -25,7 +25,7 @@ export default {
       return new Promise((resolve, reject) => {
         loginApi(userInfo)
           .then((r) => {
-            const { token } = r
+            const { token } = r.data
             commit('setToken', token)
             setToken(token)
             router.replace('/')
